@@ -10,26 +10,31 @@ Plane.prototype.move = function(){
 		var e = e || window.e;
 		var l = e.offsetX;
 		var t = e.offsetY;
-		console.log(l,t);
+		//console.log(l,t);
 		document.onmousemove = function(event){
 			var event = event || window.event;
 			var x = event.clientX - l;
 			var y = event.clientY - t;
+			if(x<=-self.ele.width()/2)x=-self.ele.width()/2;
+			if(y<=0)y=0;
+			if(y>=$('body').height()-self.ele.height()/2)y=$('body').height()-self.ele.height()/2
+			if(x>=$('body').width()-self.ele.width()/2)x=$('body').width()-self.ele.width()/2
 			self.ele.css({
 				left:x,
 				top:y
 			})
 			event.returnValue = false
 		}
+		self.ele.mouseup(function(){
+			document.onmousemove = null;
+		})
 	})
-	this.ele.mouseup(function(){
-		document.onmousemove = null;
-	})
+
 	$(document).keydown(function(e){
 		var c = e.keyCode
 		var x = self.ele.offset().left
 		var y = self.ele.offset().top
-		console.log(x)
+		//console.log(x)
 		if(c == 37){
 			x = x-10
 			self.ele.css({
@@ -57,15 +62,27 @@ Plane.prototype.move = function(){
 		}
 	})
 }
+
+Plane.prototype.fire= function(){
+	
+	setInterval(function(){
+		var x = $('.plane')[0].offsetLeft + ($('.plane').width() -$(".bullet").width())/2
+		var y = $('.plane')[0].offsetTop - $(".bullet").height()
+		//console.log(x,y)
+		new Bullet().fly(x,y)
+	},100)
+}
 function Bullet(){
 	this.ele = $('<div></div>')
 	this.ele.addClass("bullet")
-	this.ele.appendTo($('.plane'))
+	this.ele.appendTo($('body'))
 }
-Bullet.prototype.fly = function(){
+Bullet.prototype.fly = function(x,y){
 	var self = this
-	this.ele.animate({top:-500},1000 ,"linear")
-}
-Bullet.prototype.remove =function(){
-	this.ele.remove()
+	
+	this.ele.css({left:x,top:y})
+	this.ele.animate({left:x,top:0},1000 ,"linear",function(){
+		self.ele.css({background:'url(../img/die1.png)'})
+		this.remove()
+	})
 }
