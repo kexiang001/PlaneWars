@@ -21,14 +21,13 @@ body{
 }
 .bullet{
 	width: 8px;height: 20px;position: absolute;
-	left: 40%;top: -20px;
+	left: 0px;top: 0px;
 	background: url(../img/bullet.png) no-repeat;
 }
 
 .enemy1{
 	width: 59px;
 	height: 36px;
-	
 	background: url(../img/plain1.png);
 	background-size: 100% 100%;
 	position: absolute;

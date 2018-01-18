@@ -12,9 +12,8 @@ var gameEngine = {
 		var plane = new Plane()
 		plane.move()
 		plane.fire()
-		
 		setInterval(function(){
-			new Enemy1()
+			 new Enemy1()
 		},1000)
 		setInterval(function(){
 			new Enemy2()
@@ -22,6 +21,7 @@ var gameEngine = {
 		setInterval(function(){
 			new Enemy3()
 		},14000)
+		//isTouch($('.enemy1:eq(0)'),$('.bullet'))
 	},
 	bgMove: function() {
 		var self = this

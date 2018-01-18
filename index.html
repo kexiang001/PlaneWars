@@ -13,8 +13,15 @@
 <script src="js/GameEngine.js"></script>
 <script src="js/Plane.js"></script>
 <script src="js/Enemy.js"></script>
+<script src="js/common.js"></script>
 <script type="text/javascript">
 	gameEngine.start()
+	setTimeout(function(){
+		console.log($('.enemy3').width())
+		if(isTouch($('.enemy3'),$('.bullet'))){
+			alert(2)
+		}
+	},16000)
 	
 	
 </script>
