@@ -12,5 +12,15 @@
 	background-size: 100%;
 	background-position-y: 0%;  /* 先将图片挪动到顶部，以便于能够往下落 */
 }
+.plane{
+	width: 100px;height: 100px;position: absolute;
+	left: 200px;top: 400px;
+	background: url(../img/me.png) no-repeat;
+}
+.bullet{
+	width: 20px;height: 20px;position: absolute;
+	left: 50%;top: -20px;margin-left: -3px;
+	background: url(../img/bullet.png) no-repeat;
+}
 
 

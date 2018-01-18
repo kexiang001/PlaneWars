@@ -11,6 +11,14 @@
 </html>
 <script src="js/jquery-1.11.1.js"></script>
 <script src="js/GameEngine.js"></script>
+<script src="js/Plane.js"></script>
 <script type="text/javascript">
 	gameEngine.start()
+	new Plane().move()
+	setInterval(function(){
+		new Bullet().fly()
+		new Bullet().fly()
+	},100)
+	new Bullet().remove()
+	
 </script>
