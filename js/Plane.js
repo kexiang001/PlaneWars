@@ -76,6 +76,11 @@ function Bullet(){
 	this.ele = $('<div></div>')
 	this.ele.addClass("bullet")
 	this.ele.appendTo($('body'))
+	this.id = "s"+gameEngine.bullets.len++
+	gameEngine.bullets[this.id] = this
+	
+	
+	
 }
 Bullet.prototype.fly = function(x,y){
 	var self = this
@@ -84,5 +89,30 @@ Bullet.prototype.fly = function(x,y){
 	this.ele.animate({left:x,top:0},1000 ,"linear",function(){
 		self.ele.css({background:'url(../img/die1.png)'})
 		this.remove()
+		delete gameEngine.bullets[self.id]
 	})
+	
+}
+Bullet.prototype.boom = function(){
+	var self = this
+	var dieImg = [
+		"img/die1.png",
+		"img/die2.png"
+	]
+	var i = 0;
+	this.ele.stop()
+	var timer = setInterval(function(){
+		
+		self.ele.css({background:"url("+ dieImg[i++] +")"})
+		self.ele.css({
+			width:40,
+			height:43
+		})
+		if(i >= dieImg.length){
+			clearInterval(timer)
+			self.ele.remove()
+		}
+	},100)
+	
+	delete gameEngine.bullets[this.id]
 }

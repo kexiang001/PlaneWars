@@ -14,6 +14,13 @@ body{
 	background-size: 100%;
 	background-position-y: 0%;  /* 先将图片挪动到顶部，以便于能够往下落 */
 }
+#box2{
+	position: fixed;
+	right: 20px;top: 10px;
+	width: 60px;height: 30px;
+	font-size: 16px;
+	background: yellow;
+}
 .plane{
 	width: 100px;height: 100px;position: absolute;
 	left: 200px;top: 400px;
