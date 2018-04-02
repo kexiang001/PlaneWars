@@ -3,6 +3,12 @@ function Plane(){
 	this.ele = $('<div></div>')
 	this.ele.addClass("plane")
 	this.ele.appendTo($('body'))
+	this.dieImg = [		
+		"url(img/me_die1.png)",
+		"url(img/me_die2.png)",
+		"url(img/me_die3.png)",
+		"url(img/me_die4.png)"
+	]
 }
 Plane.prototype.move = function(){
 	var self = this
@@ -71,6 +77,17 @@ Plane.prototype.fire= function(){
 		//console.log(x,y)
 		new Bullet().fly(x,y)
 	},100)
+}
+Plane.prototype.die = function(){
+	var self = this 
+	var i = 0	
+	var timer = setInterval(function() {  
+		self.ele.css("background", self.dieImg[i++])
+		if (i >= self.dieImg.length) {	
+			clearInterval(timer)		
+			self.ele.remove() 			
+		}
+	}, 100)
 }
 function Bullet(){
 	this.ele = $('<div></div>')

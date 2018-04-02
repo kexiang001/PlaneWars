@@ -40,6 +40,10 @@ var gameEngine = {
 						console.log("打中了")
 					}
 				}
+				if(isTouch($('.plane'),enemy.ele)){
+						Plane.die()
+						console.log("死亡")
+				}
 			}
 		}
 	},
